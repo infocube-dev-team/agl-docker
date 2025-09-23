@@ -1,0 +1,63 @@
+name: "agl"
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - xpack.security.transport.ssl.enabled=false
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - "9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+  agl-config-server:
+    build:
+      context: ./agl-config-server
+    container_name: agl-config-server
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    ports:
+      - "3004:3004"
+    volumes:
+      - ../agl-config-server:/app
+      - ./agl-config-server/config:/app/config
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3004/app/config"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+  agl-core:
+    build:
+      context: ./agl-core
+    container_name: agl-core
+    depends_on:
+      agl-config-server:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../agl-core:/app/agl-core
+      - ../agl-custom-middleware:/app/agl-custom-middleware
+    environment:
+      - DECOUPLE_DCQ_ENABLED=true
+      - AGL_CONFIGURATION_SERVER_URL=http://agl-config-server:3004
+
+volumes:
+  es-data:
+    driver: local

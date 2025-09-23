@@ -1,0 +1,188 @@
+{
+    "menuDescriptor": {
+        "searchMode": "ES",
+        "elasticSearchUrl": "http://avs-es-service-01:9200/menu_container/_search",
+        "elasticSearchUrlHttps": "https://avs-es-service-01:9200/menu_container/_search",
+        "uiBuilderUrl": "http://avs-ui-builder-service/LIVE/##menuName##_descriptor.json",
+        "ui_template_properties": {
+            "searchMode": {
+                "available-values": [
+                    "UI",
+                    "ES"
+                ],
+                "type": "radio"
+            },
+            "elasticSearchUrl": {
+                "type": "text"
+            },
+            "uiBuilderUrl": {
+                "type": "text"
+            }
+        }
+    },
+    "isLoggedCheck": {
+        "enabled": true
+    },
+    "isTokenValidCheck": {
+        "enabled": true
+    },
+    "tray": {
+        "maxResults": 10000,
+        "size": 99,
+        "maxSize": 99
+    },
+    "contentAndPageDetailsConfig": {
+        "maxResults": 10000,
+        "size": 99
+    },
+    "tray_epg": {
+        "defaultTimeZone": "Etc/GMT",
+        "programsPerHour": 3,
+        "maxRetrievablePrograms": 8000
+    },
+    "trayUserFavorite_1_2": {
+        "vodResponseTemplate": "collection_1_2Containers-sdk",
+        "programResponseTemplate": "collection_1_2Containers-sdk",
+        "channelResponseTemplate": "collectionChannel_1_2Containers-sdk",
+        "recordingResponseTemplate": "collection_1_2Containers-sdk"
+    },
+    "pageDescriptor": {
+        "isMicroservice": false,
+        "searchMode": "ES",
+        "elasticSearchUrl": "http://avs-es-service-01:9200/page_container/_doc/page_##pageName##",
+        "elasticSearchUrlHttps": "https://avs-es-service-01:9200/page_container/_doc/page_##pageName##",
+        "uiBuilderUrl": "http://avs-ui-builder-service/LIVE/page_##pageName##.json",
+        "ui_template_properties": {
+            "isMicroservice": {
+                "available-values": [
+                    true,
+                    false
+                ],
+                "type": "radio"
+            },
+            "searchMode": {
+                "available-values": [
+                    "UI",
+                    "ES"
+                ],
+                "type": "radio"
+            },
+            "elasticSearchUrl": {
+                "type": "text"
+            },
+            "uiBuilderUrl": {
+                "type": "text"
+            }
+        }
+    },
+    "EXTCollection": {
+        "elasticSearchUrl": "http://avs-es-service-01:9200/collection_container/_doc/collection_##id##",
+        "elasticSearchUrlHttps": "https://avs-es-service-01:9200/collection_container/_doc/collection_##id##",
+        "ui_template_properties": {
+            "elasticSearchUrl": {
+                "type": "text"
+            }
+        }
+    },
+    "getTrayRecommendationRelatedContentId_1_5": {
+        "AVAAccessDetails": {
+            "url": "https://h1979x4fd0.execute-api.eu-west-1.amazonaws.com/test2/test2",
+            "apiKey": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9",
+            "username": "AVA"
+        },
+        "minScore":0.5 ,
+        "limit": 50
+    },
+    "getTrayRecommendationUserTaste_1_4": {
+        "AVAAccessDetails": {
+            "url": "https://h1979x4fd0.execute-api.eu-west-1.amazonaws.com/test2/test2",
+            "apiKey": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9",
+            "username": "AVA"
+        }
+    },
+    "getPageDetails_1_5": {
+        "defaultContext": {
+            "__leftBrace": "{",
+            "__rightBrace": "}"
+        },
+        "useEsTemplate": false,
+        "esBody": "{\"size\":0,\"aggs\":{\"PagesByContentId\":{\"filter\":{\"bool\":{\"must\":[{\"match\":{\"contentId\":\"{{contentId}}\"}},{\"match\":{\"entityType\":\"{{entityType}}\"}}]}},\"aggs\":{\"top_tag_hits\":{\"top_hits\":{\"from\":0,\"size\":100,\"_source\":{\"includes\":[\"*\"]},\"sort\":{\"exportDateEpoch\":{\"order\":\"desc\",\"unmapped_type\":\"long\"}}}}}},\"PagesByContentSubtype\":{\"filter\":{\"bool\":{\"must\":[{\"match\":{\"contentSubtype\":\"{{contentSubtype}}\"}}]}},\"aggs\":{\"top_tag_hits\":{\"top_hits\":{\"from\":0,\"size\":100,\"_source\":{\"includes\":[\"*\"]},\"sort\":{\"contentId\":{\"order\":\"asc\"},\"exportDateEpoch\":{\"order\":\"desc\",\"unmapped_type\":\"long\"}}}}}}}}",
+        "esTemplateName": "",
+        "esAggs": [
+            "PagesByContentId",
+            "PagesByContentSubtype"
+        ],
+        "esParams": {
+            "contentId": "contentId",
+            "contentSubtype": "contentSubtype",
+            "entityType": "entityType"
+        },
+        "contentSubtypes": {
+            "__default": "{{metadata.objectType}}/{{metadata.objectSubtype}}",
+            "PROGRAM": "{{contentType}}",
+            "RECORDING": "{{contentType}}/{{#externalContentId}}{{#../contentSubtype}}{{this}}{{/../contentSubtype}}{{^../contentSubtype}}EVENT{{/../contentSubtype}}{{/externalContentId}}{{^externalContentId}}SERIES{{/externalContentId}}"
+        }
+    },
+    "content_1_5": {
+        "content_enrichment": {
+            "propertiesDef": {
+                "layout": {
+                    "contentItem": "CONTENT_ITEM",
+                    "bundleItem": "BUNDLE_ITEM"
+                },
+                "actions": {
+                    "contentDetailAction": {
+                        "key": "onClick",
+                        "uri": "/CONTENT/DETAIL/{{contentType}}/{{contentId}}{{#trackingId}}?trackingId={{this}}{{/trackingId}}",
+                        "targetType": "DETAILS_PAGE"
+                    },
+                    "detailsPageAction": {
+                        "key": "onClick",
+                        "uri": "/PAGE/DETAILS/{{contentType}}/{{contentId}}{{#trackingId}}?trackingId={{this}}{{/trackingId}}",
+                        "targetType": "PAGE"
+                    }
+                }
+            },
+            "propertiesConfig": {
+                "VIDEO": {
+                    "layout": "contentItem",
+                    "actions": [
+                        "detailsPageAction"
+                    ]
+                },
+                "BUNDLE": {
+                    "layout": "bundleItem",
+                    "actions": [
+                        "detailsPageAction"
+                    ]
+                },
+                "GROUP_OF_BUNDLES": {
+                    "layout": "bundleItem",
+                    "actions": [
+                        "detailsPageAction"
+                    ]
+                },
+                "PROGRAM": {
+                    "layout": "contentItem",
+                    "actions": [
+                        "detailsPageAction"
+                    ]
+                },
+                "RECORDING": {
+                    "layout": "contentItem",
+                    "actions": [
+                        "detailsPageAction"
+                    ]
+                }
+            }
+        }
+    },
+    "getPage_1_5": {
+        "caching": {
+            "isEnabled": true,
+            "dailyExpirationInterval": 900,
+            "staleDuration": 30,
+            "__comment": "dailyExpirationInterval: cache duration in seconds since the start of the day; staleDuration: cache grace period in seconds"
+        }
+    }
+}

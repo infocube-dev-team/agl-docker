@@ -1,0 +1,29 @@
+{
+    "defaultService": "fs",
+    "defaultConfigMSHost": "http://avs-configuration-ms-service",
+    "defaultConfigMSPort": "8080",
+    "defaultConfigMSBasepath": "avsbe-configuration-ms/v1/configurations/microservice",
+    "defaultConfigESHost": "http://avs-es-service-01",
+    "defaultConfigESPort": "9200",
+    "defaultConfigESBasepath": "_cat/indices",
+    "defaultConfigPollingTimeout": 300000,
+    "aglUtilsDummyData": {
+        "config": {
+            "loginMethods": [],
+            "logoutMethods": [],
+            "compositeMethods": {}
+        },
+        "transaction": {}
+    },
+    "log": {
+        "winston.transports.Console": {
+            "enabled": true,
+            "level": "info",
+            "handleExceptions": true,
+            "humanReadableUnhandledException": false,
+            "json": false,
+            "colorize": true,
+            "newStyle": true
+        }
+    }
+}

@@ -1,0 +1,216 @@
+{
+    "mapConfigs": [
+        {
+            "name": "detail_1_2-sdk",
+            "file": "utils/mapper/templates/detail_1_2/detail_1_2-sdk.json"
+        },
+        {
+            "name": "detail_1_2Containers-sdk",
+            "file": "utils/mapper/templates/detail_1_2/detail_1_2Containers-sdk.json"
+        },
+        {
+            "name": "detail_1_2ContainersMetadata-sdk",
+            "file": "utils/mapper/templates/detail_1_2/detail_1_2ContainersMetadata-sdk.json"
+        },
+        {
+            "name": "detail_1_2ContainersParents-sdk",
+            "file": "utils/mapper/templates/detail_1_2/detail_1_2ContainersParents-sdk"
+        },
+        {
+            "name": "assetDetail-sdk",
+            "file": "utils/mapper/templates/detail_1_2/assetDetail-sdk.json"
+        },
+        {
+            "name": "detail_1_4ContainersCategories-sdk",
+            "file": "utils/mapper/templates/detail_1_4/detail_1_4ContainersCategories-sdk.json"
+        },
+        {
+            "name": "detail_1_4ContainersParents-sdk",
+            "file": "utils/mapper/templates/detail_1_4/detail_1_4ContainersParents-sdk"
+        },
+        {
+            "name": "assetDetail_1_4-sdk",
+            "file": "utils/mapper/templates/detail_1_4/assetDetail_1_4-sdk"
+        },
+        {
+            "name": "detail_1_4-sdk",
+            "file": "utils/mapper/templates/detail_1_4/detail_1_4-sdk.json"
+        },
+        {
+            "name": "detail_1_4Containers-sdk",
+            "file": "utils/mapper/templates/detail_1_4/detail_1_4Containers-sdk.json"
+        },
+        {
+            "name": "detail_1_4ContainersMetadata-sdk",
+            "file": "utils/mapper/templates/detail_1_4/detail_1_4ContainersMetadata-sdk.json"
+        },
+        {
+            "name": "collection_1_2RecordinSeries-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collection_1_2RecordinSeries-sdk.json"
+        },
+        {
+            "name": "collectionRecordingSeriesContainers-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collectionRecordingSeriesContainers-sdk.json"
+        },
+        {
+            "name": "collection_1_2ContainersParents-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersParents-sdk"
+        },
+        {
+            "name": "collectionChannel_1_2-sdk",
+            "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2-sdk.json"
+        },
+        {
+            "name": "collectionChannel_1_2Assets-sdk",
+            "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Assets-sdk.json"
+        },
+        {
+            "name": "collectionChannel_1_2Regions-sdk",
+            "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Regions-sdk.json"
+        },
+        {
+            "name": "collectionChannel_1_2AssetMetadata-sdk",
+            "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2AssetMetadata-sdk.json"
+        },
+        {
+            "name": "collectionChannel_1_2Containers-sdk",
+            "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Containers-sdk.json"
+        },
+        {
+            "name": "collectionChannel_1_2Metadata-sdk",
+            "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Metadata-sdk.json"
+        },
+        {
+            "name": "collectionChannel_1_2Collector-sdk",
+            "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Collector-sdk.json"
+        },
+        {
+            "name": "collectionEpg-sdk",
+            "file": "utils/mapper/templates/tray_1_2/epg/collectionEpg-sdk.json"
+        },
+        {
+            "name": "collectionEpgContainersChannel-sdk",
+            "file": "utils/mapper/templates/tray_1_2/epg/collectionEpgContainersChannel-sdk.json"
+        },
+        {
+            "name": "collection_1_2-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collection_1_2-sdk.json"
+        },
+        {
+            "name": "collection_1_2Containers-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collection_1_2Containers-sdk.json"
+        },
+        {
+            "name": "collection_1_2ContainersAssets-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersAssets-sdk.json"
+        },
+        {
+            "name": "collection_1_2ContainersChannel-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersChannel-sdk.json"
+        },
+        {
+            "name": "collection_1_2ContainersMetadata-sdk",
+            "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersMetadata-sdk.json"
+        },
+        {
+            "name": "collection_1_4Channel-sdk",
+            "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4Channel-sdk.json"
+        },
+        {
+            "name": "collection_1_4ChannelAssets-sdk",
+            "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelAssets-sdk.json"
+        },
+        {
+            "name": "collection_1_4ChannelContainers-sdk",
+            "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelContainers-sdk.json"
+        },
+        {
+            "name": "collection_1_4ChannelMetadata-sdk",
+            "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelMetadata-sdk.json"
+        },
+        {
+            "name": "collection_1_4ChannelCollector-sdk",
+            "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelCollector-sdk.json"
+        },
+        {
+            "name": "collection_1_4Epg-sdk",
+            "file": "utils/mapper/templates/tray_1_4/epg/collection_1_4Epg-sdk.json"
+        },
+        {
+            "name": "collection_1_4EpgContainersChannel-sdk",
+            "file": "utils/mapper/templates/tray_1_4/epg/collection_1_4EpgContainersChannel-sdk.json"
+        },
+        {
+            "name": "collection_1_4-sdk",
+            "file": "utils/mapper/templates/tray_1_4/search/collection_1_4-sdk.json"
+        },
+        {
+            "name": "collection_1_5-sdk",
+            "file": "utils/mapper/templates/tray_1_5/search/collection_1_5-sdk.json"
+        },
+        {
+            "name": "collection_1_4Containers-sdk",
+            "file": "utils/mapper/templates/tray_1_4/search/collection_1_4Containers-sdk.json"
+        },
+        {
+            "name": "collection_1_4ContainersAssets-sdk",
+            "file": "utils/mapper/templates/tray_1_4/search/collection_1_4ContainersAssets-sdk.json"
+        },
+        {
+            "name": "collection_1_4ContainersChannel-sdk",
+            "file": "utils/mapper/templates/tray_1_4/search/collection_1_4ContainersChannel-sdk.json"
+        },
+        {
+            "name": "collection_1_4ContainersMetadata-sdk",
+            "file": "utils/mapper/templates/tray_1_4/search/collection_1_4ContainersMetadata-sdk.json"
+        },
+        {
+            "name": "collection_1_4ContainersParents-sdk",
+            "file": "utils/mapper/templates/tray_1_4/search/collection_1_4ContainersParents-sdk.json"
+        },
+        {
+            "name": "collection_1_5RecordinSeries-sdk",
+            "file": "utils/mapper/templates/tray_1_5/search/collection_1_5RecordinSeries-sdk.json"
+        },
+        {
+            "name": "collectionRecordingSeriesContainers_1_5-sdk",
+            "file": "utils/mapper/templates/tray_1_5/search/collectionRecordingSeriesContainers_1_5-sdk.json"
+        },
+        {
+            "name": "actions-sdk",
+            "file": "utils/mapper/templates/actions-sdk.json"
+        },
+        {
+            "name": "actorsList-sdk",
+            "file": "utils/mapper/templates/actorsList-sdk.json"
+        },
+        {
+            "name": "detail-sdk",
+            "file": "utils/mapper/templates/detail-sdk.json"
+        },
+        {
+            "name": "detailContainers-sdk",
+            "file": "utils/mapper/templates/detailContainers-sdk.json"
+        },
+        {
+            "name": "detailContainersCategories-sdk",
+            "file": "utils/mapper/templates/detailContainersCategories-sdk.json"
+        },
+        {
+            "name": "detailContainersChildren-sdk",
+            "file": "utils/mapper/templates/detailContainersChildren-sdk.json"
+        },
+        {
+            "name": "detailContainersPlatformVariants-sdk",
+            "file": "utils/mapper/templates/detailContainersPlatformVariants-sdk.json"
+        },
+        {
+            "name": "detailContainersObjects-sdk",
+            "file": "utils/mapper/templates/detailContainersObjects-sdk.json"
+        },
+        {
+            "name": "collection-sdk",
+            "file": "utils/mapper/templates/collection-sdk.json"
+        }
+    ]
+}

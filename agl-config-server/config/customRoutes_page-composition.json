@@ -1,0 +1,739 @@
+[
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1)/:cluster/:locale/:channel/:propertyName/TRAY/COLLECTION",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1/collection",
+      "shared/getContentMetadata",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/TRAY/COLLECTION",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_2/collection",
+      "shared/getContentMetadata_1_2",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/COLLECTION",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_2/collection",
+      "shared/getContentMetadata_1_5",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1)/:cluster/:locale/:channel/:propertyName/TRAY/EXTCOLLECTION/:collectionId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1/ext_collection/index",
+      "shared/getContentMetadata",
+      "shared/getLauncherContentMetadata",
+      "tray_1/ext_collection/extc_ordering",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/TRAY/EXTCOLLECTION/:collectionId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1/ext_collection/index",
+      "shared/getContentMetadata_1_2",
+      "tray_1_2/ext_collection/excludePastLiveEvents",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/getLauncherContentMetadata",
+      "tray_1/ext_collection/extc_ordering",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/EXTCOLLECTION/:collectionId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1_5/ext_collection/index",
+      "shared/getContentMetadata_1_5",
+      "tray_1_2/ext_collection/excludePastLiveEvents",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/getLauncherContentMetadata",
+      "tray_1/ext_collection/extc_ordering",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1)/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/VOD",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1/search_vod",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/VOD",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_2/search_vod",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/VOD",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_5/search_vod",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1)/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/LIVE",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1/search_live",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/PROGRAM",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_2/search_program",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/PROGRAM",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_5/search_program",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/TRAY/USER/FAVORITES",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/isLogged",
+      "tray_1_2/favorite/validation",
+      "tray_1_2/favorite/getDefaultFolder",
+      "shared/paginationValidation",
+      "tray_1_2/favorite/getSharedPlaylist/index",
+      "tray_1_2/favorite/getFavorite",
+      "shared/getContentMetadata_1_2",
+      "tray_1_2/favorite/getMetadata/index",
+      "content_1_2/content_enrichment/enrichment",
+      "tray_1_2/favorite/dataNormalization/customMapper",
+      "tray_1_2/favorite/dataNormalization"
+    ],
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.5)/:cluster/:locale/:channel/:propertyName/TRAY/USER/FAVORITES",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/isLogged",
+      "tray_1_2/favorite/validation",
+      "tray_1_2/favorite/getDefaultFolder",
+      "shared/paginationValidation",
+      "tray_1_2/favorite/getSharedPlaylist/index",
+      "tray_1_2/favorite/getFavorite",
+      "shared/getContentMetadata_1_5",
+      "tray_1_2/favorite/getMetadata/index",
+      "content_1_2/content_enrichment/enrichment",
+      "tray_1_2/favorite/dataNormalization/customMapper",
+      "tray_1_2/favorite/dataNormalization"
+    ],
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/USER/FAVORITES",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/isLogged",
+      "tray_1_2/favorite/validation",
+      "tray_1_2/favorite/getDefaultFolder",
+      "shared/paginationValidation",
+      "tray_1_2/favorite/getSharedPlaylist/index",
+      "tray_1_2/favorite/getFavorite",
+      "shared/getContentMetadata_1_5",
+      "tray_1_6/favorite/getMetadata/index",
+      "content_1_2/content_enrichment/enrichment",
+      "tray_1_2/favorite/dataNormalization/customMapper",
+      "tray_1_2/favorite/dataNormalization"
+    ],
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1|1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/PAGE/:pageId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "page_1"
+    ],
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/PAGE/:pageId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "page_1_5/loadPage",
+      "page_1_5"
+    ],
+    "nanoConfigKey": "getPage_1_5",
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.5)/:cluster/:locale/:channel/:propertyName/PAGE/DETAILS/:contentType/:contentId",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1_2/detail/validation",
+      "content_1_5/detail/loadContent",
+      "tray_1/recording/event/getProgramByExternalId",
+      "content_1_4/content_enrichment/enrichment",
+      "page_1_5/details/loadPage",
+      "page_1_5",
+      "page_1_5/details",
+      "shared/autoMapper"
+    ],
+    "nanoConfigKey": "getPageDetails_1_5",
+    "panic": false,
+    "template": "detail_1_4-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/PAGE/DETAILS/:contentType/:contentId",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1_2/detail/validation",
+      "content_1_6/detail/loadContent",
+      "tray_1/recording/event/getProgramByExternalId",
+      "content_1_4/content_enrichment/enrichment",
+      "page_1_5/details/loadPage",
+      "page_1_5",
+      "page_1_5/details",
+      "shared/autoMapper"
+    ],
+    "nanoConfigKey": "getPageDetails_1_5",
+    "panic": false,
+    "template": "detail_1_4-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1|1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/MENU/:menuId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "menu_1"
+    ],
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/MENU/:menuZone?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "menu_1_5"
+    ],
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1)/:cluster/:locale/:channel/:propertyName/CONTENT/DETAIL/:contentType?/:contentId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1/detail",
+      "content_1/getBundleItems",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "detail-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3)/:cluster/:locale/:channel/:propertyName/CONTENT/DETAIL/:contentType?/:contentId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1_2/detail/validation",
+      "content_1_2/detail/loadContent",
+      "tray_1/recording/event/getProgramByExternalId",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "detail_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.4)/:cluster/:locale/:channel/:propertyName/CONTENT/DETAIL/:contentType?/:contentId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1_2/detail/validation",
+      "content_1_4/detail/loadContent",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "detail_1_4-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.5)/:cluster/:locale/:channel/:propertyName/CONTENT/DETAIL/:contentType?/:contentId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1_2/detail/validation",
+      "content_1_5/detail/loadContent",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "detail_1_4-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/CONTENT/DETAIL/:contentType?/:contentId?",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1_2/detail/validation",
+      "content_1_6/detail/loadContent",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "detail_1_4-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.0|1.1)/:cluster/:locale/:channel/:propertyName/TRAY/LIVECHANNELS",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1/live_channels",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collectionChannel-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/TRAY/LIVECHANNELS",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_2/live_channels",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collectionChannel_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/LIVECHANNELS",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_2/live_channels",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collectionChannel_1_2-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3)/:cluster/:locale/:channel/:propertyName/TRAY/EPG",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1_2/get_epg/validation",
+      "tray_1_2/get_epg",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collectionEpg-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.4)/:cluster/:locale/:channel/:propertyName/TRAY/EPG",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1_2/get_epg/validation",
+      "tray_1_2/get_epg",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4Epg-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/EPG",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1_2/get_epg/validation",
+      "tray_1_2/get_epg",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4Epg-sdk"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4|1.5)/:cluster/:locale/:channel/:propertyName/TRAY/USER/RECORDING/EVENT",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/isLogged",
+      "shared/paginationValidation",
+      "tray_1/recording/validation/event",
+      "tray_1/recording/event",
+      "tray_1/recording/event/getProgramByExternalId",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk",
+    "nanoConfigKey": "getTrayRecordingEvent"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/USER/RECORDING/EVENT",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/isLogged",
+      "shared/paginationValidation",
+      "tray_1/recording/validation/event",
+      "tray_1_6/recording/event",
+      "tray_1/recording/event/getProgramByExternalId",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk",
+    "nanoConfigKey": "getTrayRecordingEvent"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.2|1.3|1.4)/:cluster/:locale/:channel/:propertyName/TRAY/USER/RECORDING/SERIES",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/isLogged",
+      "shared/paginationValidation",
+      "tray_1/recording/validation/series",
+      "tray_1/recording/series",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_2RecordinSeries-sdk",
+    "nanoConfigKey": "getTrayRecordingSeries"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/USER/RECORDING/SERIES",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/isLogged",
+      "shared/paginationValidation",
+      "tray_1_5/recording/series/validation",
+      "tray_1_5/recording/series",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_5RecordinSeries-sdk",
+    "nanoConfigKey": "getTrayRecordingSeries_1_5"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.4)/:cluster/:locale/:channel/:propertyName/TRAY/SUGGESTION",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_4/search/validation",
+      "tray_1_4/search/searchSuggestion",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTraySearchSuggestion_1_4"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SUGGESTION",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_4/search/validation",
+      "tray_1_4/search/searchSuggestion",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTraySearchSuggestion_1_4"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.4)/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_4/search/validation",
+      "tray_1_4/search",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTraySearch_1_4"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_4/search/validation",
+      "tray_1_4/search",
+      "content_1_2/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTraySearch_1_4"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.4)/:cluster/:locale/:channel/:propertyName/TRAY/RECOMMENDATION/USERTASTE",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1_4/recommendation/usertaste",
+      "tray_1_4/recommendation/usertaste/searchContents",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTrayRecommendationUserTaste_1_4"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/RECOMMENDATION/USERTASTE",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1_4/recommendation/usertaste",
+      "tray_1_4/recommendation/usertaste/searchContents",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTrayRecommendationUserTaste_1_4"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion(1.4)/:cluster/:locale/:channel/:propertyName/TRAY/DYNAMICCOLLECTION/:templateName",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_4/dynamicCollection",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTrayDynamicCollection_1_4"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/DYNAMICCOLLECTION/:templateName",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_5/dynamicCollection",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_5-sdk",
+    "nanoConfigKey": "getTrayDynamicCollection_1_5"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/CONFIG/DICTIONARY",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "config_1_5/dictionary/get"
+    ],
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/CONFIG/APP",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "config_1_5/app/get"
+    ],
+    "nanoConfigKey": "getConfigApp_1_5",
+    "panic": false
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/RECOMMENDATION/RELATEDCONTENT/:contentId",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "tray_1_5/recommendation/relatedContent",
+      "tray_1_5/recommendation/relatedContent/getVodProgramMetadataFromES",
+      "tray_1_5/recommendation/relatedContent/filterExpiredContents",
+      "content_1_4/content_enrichment/enrichment",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTrayRecommendationRelatedContentId_1_5"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/CONTENT/NEXT-EPISODE/:contentId",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "content_1_5/nextEpisode/validation",
+      "content_1_5/nextEpisode",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getContentNextEpisode_1_5"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/PAGE",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_6/search/page",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "collection_1_4-sdk",
+    "nanoConfigKey": "getTraySearchPage_1_6"
+  },
+  {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/:contentType",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_5/search_content"
+    ],
+    "panic": false,
+    "template": "collection_1_2-sdk"
+  }
+]

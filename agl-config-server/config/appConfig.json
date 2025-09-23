@@ -1,0 +1,1416 @@
+{
+  "sessionExpiration": 3600000,
+  "sessionCookieName": "sessionId",
+  "sessionCookie": {
+    "name": "sessionId",
+    "options": {
+      "path": "/",
+      "httpOnly": true,
+      "secure": true,
+      "__comment": "Cookie with SECURE attibute will work just if SSL is enabled, if you wants to use the server without encryption you should consider to set it to false"
+    }
+  },
+  "caseSensitiveRoutes": true,
+  "timeout": 15000,
+  "timeoutPurchaseItemPGW": 30000,
+  "log": {
+    "trasport": "file",
+    "level": "debug",
+    "filename": "logs/agl.log",
+    "_comment": "trasport can be console or file | filename is ignored for console | In case of OCP env the trasport will be ignored and set every time to console by default"
+  },
+  "morganLogger": {
+    "dateFormat": "YYYY-MM-DD",
+    "monitoringLogFormat": "ts: :customDate | logLevel: MONITORING | appId: AGL | thread: :processPid | clientIp: :clientIp | SID: :sessionId | TN: :transactionId | method: :method | apiType: NANO | userId: :userId | deviceId: :deviceId | api: :url | response: resultCode=:resultCode, errorDescription=:errorDescription | platform: :channel | executionTime(ms): :response-time[0]",
+    "analyticsLogFormat": "ts: :customDate | logLevel: ANALYTICS | appId: AGL | thread: :processPid | clientIp: :clientIp | SID: :sessionId | TN: :transactionId | :track | :device | :app | :customer | :nav | :custom | apiType: NANO | userId: :userId | api: :url | platform: :channel",
+    "directory": "logs/",
+    "monitoringLogFile": "mon-%DATE%.log",
+    "monitoringLogEnabled": false,
+    "analyticsLogFile": "analytics-%DATE%.log",
+    "analyticsLogEnabled": false,
+    "rotationFrequency": "24h",
+    "morganTokens": [
+      {
+        "key": "customDate",
+        "value": "new Date(new Date().getTime() - (new Date().getTimezoneOffset() * 60 * 1000)).toISOString().replace('T', ' ').replace('Z', '');"
+      },
+      {
+        "key": "clientIp",
+        "value": "req.transaction.ip"
+      },
+      {
+        "key": "sessionId",
+        "value": "req.transaction.clientId"
+      },
+      {
+        "key": "transactionId",
+        "value": "req.transaction.id"
+      },
+      {
+        "key": "crmAccount",
+        "value": "req.cookies.crm_account"
+      },
+      {
+        "key": "track",
+        "value": "req.headers['x-ch-track']"
+      },
+      {
+        "key": "device",
+        "value": "req.headers['x-ch-device']"
+      },
+      {
+        "key": "app",
+        "value": "req.headers['x-ch-app']"
+      },
+      {
+        "key": "customer",
+        "value": "req.headers['x-ch-customer']"
+      },
+      {
+        "key": "nav",
+        "value": "req.headers['x-ch-nav']"
+      },
+      {
+        "key": "custom",
+        "value": "req.headers['x-ch-custom']"
+      },
+      {
+        "key": "resultCode",
+        "value": "res.locals.fullResult.resultCode"
+      },
+      {
+        "key": "errorDescription",
+        "value": "res.locals.fullResult.errorDescription"
+      },
+      {
+        "key": "processPid",
+        "value": "process.pid"
+      },
+      {
+        "key": "channel",
+        "value": "req.transaction.channel"
+      },
+      {
+        "key": "userId",
+        "value": "req.transaction.avsToken ? req.transaction.avsToken.userId : '-'"
+      },
+      {
+        "key": "deviceId",
+        "value": "(req.transaction.avsToken && req.transaction.avsToken.deviceInfo) ? req.transaction.avsToken.deviceInfo.deviceId : '-'"
+      }
+    ]
+  },
+  "authentication": {
+    "key": "FQm01ZnU1dWl9xYou39HPZsml0tzGuceh63ZVUvj6AI=",
+    "issuer": "AVS",
+    "algorithm": "HS256",
+    "apiList": [
+      "GetProfile",
+      "StartRecording",
+      "SetRecording",
+      "UpdateRecording",
+      "DeleteRecordings",
+      "StopRecording",
+      "SetSeriesRecording",
+      "UpdateSeriesRecording",
+      "DeleteSeriesRecordings",
+      "GetRecordingList",
+      "GetUserRecordingProfile",
+      "GetRecordingUrl",
+      "GetSeriesRecordings",
+      "ReserveAccountCancellation",
+      "SetRating",
+      "CheckPin",
+      "AddSubAccount",
+      "CheckPMAvailability",
+      "RetrievePaymentMethod",
+      "ResetPin",
+      "Dislike",
+      "Like",
+      "PMRegistrationNotify",
+      "SetPaymentMethod",
+      "UpdateSubAccountProfile",
+      "ReserveCancellation",
+      "GetLastViewedContent",
+      "SetLastViewedContent",
+      "UserConciliation",
+      "UpdateProfile",
+      "Logout",
+      "CheckContentRights",
+      "CheckAggregatedContentRights",
+      "GetBlackoutDetails",
+      "AddBookmarkSet",
+      "GetBookmarkSet",
+      "UpdateBookmarkSet",
+      "PurchaseItem",
+      "ReserveVoucher",
+      "PurchaseItemPGW",
+      "IOSPurchase",
+      "RegisterExtPurchase",
+      "GetVoucher",
+      "UseVoucher",
+      "GetPurchaseHistory",
+      "GetPaymentHistory",
+      "NotifyDownload",
+      "RegisterDevice",
+      "GetAccountDeviceList",
+      "UpdateDeviceDetail",
+      "RemoveDeviceAssociation"
+    ]
+  },
+  "validation": {
+    "apiList": [
+      "UpdateFavourite",
+      "CopyPlaylist",
+      "SetDeviceProperties",
+      "DeleteRecordings",
+      "GetPrice",
+      "CheckAggregatedContentRights",
+      "UpdatePlaylist"
+    ]
+  },
+  "client.authorization": {
+    "isEnabled": false,
+    "deliveryId": "123456",
+    "hashalgorithm": "sha256",
+    "issuer": "AVS",
+    "algorithm": "HS256",
+    "apiList": [
+      "REC_ENGINE"
+    ]
+  },
+  "versioning": {
+    "CheckAggregatedContentRights": {
+      "2.0.0": "4.2",
+      "3.0.0": "6.0"
+    },
+    "Login": {
+      "2.0.0": "4.3",
+      "3.0.0": "6.1"
+    },
+    "defaultVersioning": {
+      "2.0.0": "4.0"
+    }
+  },
+  "microserviceUrl": {
+    "default": "http://avs-b2c-emulation-layer-ms-service:8080/b2c-emulation-ms",
+    "authentication-ms": "http://avs-auth-ms-service:8080/avsbe-auth-ms",
+    "npvr-ms": "http://avs-npvr-ms-service:8080/avsbe-npvr-ms",
+    "livecatalogue-ms": "http://avs-livecatalogue-ms-service:8080/avsbe-livecatalogue-ms",
+    "bookmark-ms": "http://avs-bookmark-ms-service:8080/avsbe-bookmark-ms",
+    "userentitlement-ms": "http://avs-userentitlement-ms-service:8080/avsbe-userentitlement-ms",
+    "configuration-ms": "http://avs-configuration-ms-service:8080/avsbe-configuration-ms",
+    "productpurchase-ms": "http://avs-purchase-ms-service:8080/avsbe-productpurchase-ms",
+    "userprofile-ms": "http://avs-user-profile-ms-service:8080/avsbe-userprofile-ms",
+    "contentplayback-ms": "http://avs-contentplayback-ms-service:8080/avsbe-contentplayback-ms",
+    "vodcatalogue-ms": "http://avs-vod-catalogue-ms-service:8080/avsbe-vodcatalogue-ms",
+    "commercialcatalogue-ms": "http://avs-commerce-ms-service:8080/avsbe-commerce-ms",
+    "devicemanagement-ms": "http://avs-device-management-ms-service:8080/avsbe-devicemanagement-ms",
+    "concurrentstream-ms": "http://avs-concurrent-stream-ms-service:8080/avsbe-concurrentstream-ms",
+    "groupdefinition-ms": "http://avs-group-definition-ms-service:8080/avsbe-groupdefinition-ms",
+    "pgw-ms": "http://avs-rpgw-service:8080/R-PGW-webservices/webresources",
+    "dcq-live-ingestor": "http://avs-dcq-live-ingestor-service:8080/dcq-live-ingestor",
+    "dcq-live-ingestor-ms": "http://avs-dcq-live-ingestor-service:8080/dcq-live-ingestor-ms",
+    "pushmessage-ms": "http://avs-push-message-notification-ms-service:8080/avsbe-pushmessagenotification-ms",
+    "device-resource-manager-ms": "http://avs-device-resource-management-service:8080/avsbe-deviceresourcemanager-ms",
+    "avsbe-logging-ms": "http://avs-loggingreporting-ms-service:8080/avsbe-loggingreporting-ms",
+    "document-generator-ms": "http://avs-document-generator-ms-service:8080/avsbe-documentgenerator-ms",
+    "export-user-data-ms": "http://avs-export-user-data-ms-service:8080/avsbe-export-user-data-ms",
+    "ava-sdk-configurator-ms": "http://ava-sdk-configuration-ms-service:8080/avsbe-avasdkconfiguration-ms",
+    "tokenmanagement-ms": "http://avs-tokenmanagement-ms-service:8080/avsbe-tokenmanagement-ms",
+    "web-socket-ms": "http://ws-message-dispatcher:8080/avsbe-web-socket-ms",
+    "dcq-vod-ingestor-ms": "http://avs-dcq-vod-ingestor-service:8080/dcq-vod-ingestor-ms"
+  },
+  "besc": {
+    "isMicroservice": true,
+    "basePath": "/besc",
+    "Login": "default",
+    "LoginFB": "default",
+    "IpAuthentication": "default",
+    "Logout": "default",
+    "SilentLoginIOS": "default",
+    "ChangePassword": "default",
+    "StopRecording": "default",
+    "SetRecording": "default",
+    "SetSeriesRecording": "default",
+    "UpdateRecording": "default",
+    "UpdateSeriesRecording": "default",
+    "DeleteRecordings": "default",
+    "DeleteSeriesRecordings": "default",
+    "GetRecordingList": "default",
+    "GetUserRecordingProfile": "default",
+    "AddBookmarkSet": "default",
+    "GetBookmarkSet": "default",
+    "UpdateBookmarkSet": "default",
+    "GetEpg": "livecatalogue-ms",
+    "GetLiveChannels": "livecatalogue-ms",
+    "GetRecordingUrl": "default",
+    "GetSeriesRecordings": "default",
+    "GetBlackoutDetails": "livecatalogue-ms",
+    "GetBlackoutEvents": "livecatalogue-ms",
+    "GetBlackoutRegions": "livecatalogue-ms",
+    "GetPPV": "livecatalogue-ms",
+    "GetLiveInfo": "livecatalogue-ms",
+    "GetGeoData": "default",
+    "GetProperties": "default",
+    "CheckAggregatedContentRights": "default",
+    "CheckContentRights": "default",
+    "PurchaseItem": "productpurchase-ms",
+    "PurchaseItemNotification": "productpurchase-ms",
+    "ReserveVoucher": "default",
+    "PurchaseItemPGW": "default",
+    "IOSPurchase": "productpurchase-ms",
+    "RegisterExtPurchase": "default",
+    "UseVoucher": "productpurchase-ms",
+    "GetVoucher": "default",
+    "GetPurchaseHistory": "default",
+    "GetPaymentHistory": "default",
+    "RestorePurchaseIOS": "default",
+    "ReserveAccountCancellation": "default",
+    "SetRating": "default",
+    "GetRating": "default",
+    "CheckPin": "default",
+    "AddSubAccount": "default",
+    "NotifyDownload": "default",
+    "GetCDN": "default",
+    "KeepAlive": "default",
+    "CheckPMAvailability": "default",
+    "Dislike": "default",
+    "GetFamilyAccountList": "default",
+    "PMRegistrationNotify": "default",
+    "GetProfile": "default",
+    "Join": "default",
+    "ResetPin": "default",
+    "RetrievePaymentMethod": "default",
+    "Like": "default",
+    "SetPaymentMethod": "default",
+    "GetLastViewedContent": "default",
+    "SetLastViewedContent": "default",
+    "ReserveCancellation": "default",
+    "UpdateProfile": "default",
+    "UpdateSubAccountProfile": "default",
+    "UserConciliation": "default",
+    "GetCatalogueTree": "default",
+    "GetSOTVPrice": "default",
+    "GetCUTVPrice": "default",
+    "GetProductList": "default",
+    "GetProductByContent": "default",
+    "GetPrice": "default",
+    "RegisterDevice": "default",
+    "GetAccountDeviceList": "default",
+    "UpdateDeviceDetail": "default",
+    "RemoveDeviceAssociation": "default",
+    "GetWVLicence": "default",
+    "defaultRoute": "default",
+    "UpdateDeviceDetails": "devicemanagement-ms",
+    "AddFavourite": "default",
+    "UpdateDeviceNotification": "default"
+  },
+  "b2b": {
+    "isMicroservice": true,
+    "basePath": "/b2b",
+    "GetBlackoutEvents": "livecatalogue-ms",
+    "switchCommercialPackage": "productpurchase-ms",
+    "PolicyCalculation": "concurrentstream-ms",
+    "IncreaseConcurrentStreams": "concurrentstream-ms",
+    "RefreshConcurrentStreams": "concurrentstream-ms",
+    "DecreaseConcurrentStreams": "concurrentstream-ms",
+    "getUser": "userprofile-ms",
+    "GetBookmarks": "bookmark-ms",
+    "AddBookmarkSet": "bookmark-ms",
+    "UpdateBookmarkSet": "bookmark-ms",
+    "GetRecordings": "npvr-ms",
+    "GetRecordingUrl": "npvr-ms",
+    "GetSOTVUrl": "npvr-ms",
+    "GetCUTVUrl": "npvr-ms",
+    "GetUserInfo": "npvr-ms",
+    "CreateUser": "npvr-ms",
+    "DeleteUser": "npvr-ms",
+    "GetSOTVEvent": "npvr-ms",
+    "GetCUTVEvent": "npvr-ms",
+    "RefreshAuthenticationToken": "authentication-ms",
+    "createAuthenticationToken": "authentication-ms",
+    "SetPaymentProfile": "pgw-ms",
+    "GetPaymentProfile": "pgw-ms",
+    "UpsertTechnicalPackage": "userentitlement-ms",
+    "CreateUserDetails": "userprofile-ms"
+  },
+  "v1": {
+    "isMicroservice": true,
+    "basePath": "/v1",
+    "RefreshAccessToken": "tokenmanagement-ms",
+    "getUser": "userprofile-ms",
+    "UpdateUserDetails": "userprofile-ms",
+    "GetUserFamily": "userprofile-ms",
+    "SetPaymentInfo": "userprofile-ms",
+    "GetUserConsents": "userprofile-ms",
+    "CreateUserConsents": "userprofile-ms",
+    "UpdateUserConsents": "userprofile-ms",
+    "CreateResetPinToken": "userprofile-ms",
+    "resetPins": "userprofile-ms",
+    "getResetPinTokenStatus": "userprofile-ms",
+    "CheckParentalControlPin": "userprofile-ms",
+    "CheckPurchasePin": "userprofile-ms",
+    "GetRating": "userprofile-ms",
+    "GetBookmarks": "bookmark-ms",
+    "AddBookmarkSet": "bookmark-ms",
+    "UpdateBookmarkSet": "bookmark-ms",
+    "UnregisterDevice_auth": "authentication-ms",
+    "RegisterDevice_auth": "authentication-ms",
+    "ResetPassword": "authentication-ms",
+    "createResetPasswordToken": "authentication-ms",
+    "getResetPasswordTokenStatus": "authentication-ms",
+    "Logout": "authentication-ms",
+    "ChangePassword": "authentication-ms",
+    "Login": "authentication-ms",
+    "LoginFB": "authentication-ms",
+    "IpAuthentication": "authentication-ms",
+    "SilentLoginIOS": "authentication-ms",
+    "CreateSocialUser": "authentication-ms",
+    "VerifyOTP": "authentication-ms",
+    "GenerateTokens": "tokenmanagement-ms",
+    "GetOperatorDefinedServiceByUser": "commercialcatalogue-ms",
+    "GetOperatorDefinedServices": "commercialcatalogue-ms",
+    "GetPPVCommercialPackages": "commercialcatalogue-ms",
+    "CreateLoginReport": "avsbe-logging-ms",
+    "GetBrokerDocuments": "document-generator-ms",
+    "GetAvailableUpdates": "document-generator-ms",
+    "GetUserDevices": "device-resource-manager-ms",
+    "GetUserDevicePolicies": "device-resource-manager-ms",
+    "RegisterDevice": "device-resource-manager-ms",
+    "GetDeviceDetails": "device-resource-manager-ms",
+    "GetDeviceProperties": "device-resource-manager-ms",
+    "SetDeviceProperties": "device-resource-manager-ms",
+    "UpdateDevice": "device-resource-manager-ms",
+    "UnregisterDevice": "device-resource-manager-ms",
+    "ValidateUserToken": "export-user-data-ms",
+    "GenerateUserInfo": "export-user-data-ms",
+    "DownloadUserInfo": "export-user-data-ms",
+    "GetUserChannels": "userentitlement-ms",
+    "CheckLiveRights": "userentitlement-ms",
+    "CheckVODRights": "userentitlement-ms",
+    "CheckVodRightsByDRMInfo": "userentitlement-ms",
+    "CheckPPVRights": "userentitlement-ms",
+    "GetConsents": "configuration-ms",
+    "GetApplicationConfiguration": "configuration-ms",
+    "GetClientScopes": "configuration-ms",
+    "GetProperties": "configuration-ms",
+    "GetConfigurationParameters": "configuration-ms",
+    "GetMicroserviceConfiguration": "configuration-ms",
+    "CheckRecordingRights": "npvr-ms",
+    "CheckSOTVRights": "npvr-ms",
+    "CheckCUTVRights": "npvr-ms",
+    "GetRecordingList": "npvr-ms",
+    "GetMessages": "pushmessage-ms",
+    "SendTrigger": "pushmessage-ms",
+    "GetGroupsByUser": "groupdefinition-ms",
+    "GetGroupsByDevice": "groupdefinition-ms",
+    "CheckDevice": "devicemanagement-ms",
+    "CreateBrokerDocuments": "document-generator-ms",
+    "UpsertTechnicalPackage": "vodcatalogue-ms",
+    "GetPublisherPoint": "contentplayback-ms",
+    "epgPackageIngestor": "dcq-live-ingestor-ms",
+    "CheckAndRegisterDevice": "devicemanagement-ms",
+    "PurchaseItemPGW": "productpurchase-ms",
+    "CreateUserMapping": "authentication-ms",
+    "ValidateUser": "authentication-ms",
+    "ReserveCancellation": "productpurchase-ms",
+    "GetPurchaseHistory": "productpurchase-ms",
+    "GetBookmarkSet": "bookmark-ms",
+    "CheckTimeshiftRights": "userentitlement-ms",
+    "AddBundleVod": "userentitlement-ms",
+    "InsertDownload": "contentplayback-ms",
+    "CheckGeoBlocking": "userentitlement-ms",
+    "GetUrlWithAkamaiToken": "contentplayback-ms",
+    "UpdateDownload": "contentplayback-ms",
+    "GetAVASDKConfigurationByConsents": "ava-sdk-configurator-ms",
+    "DeleteUserRefreshToken": "tokenmanagement-ms",
+    "UpsertServiceMessageRegistration": "pushmessage-ms",
+    "DeleteServiceMessageRegistration": "pushmessage-ms",
+    "GetConnectionToken": "web-socket-ms",
+    "GetUserClientScope": "tokenmanagement-ms",
+    "DeleteUserClientScope": "tokenmanagement-ms",
+    "GetNextEpisode": "vodcatalogue-ms",
+    "GetActiveLanguages": "vodcatalogue-ms",
+    "upsertSolutionOfferAndPackage": "commercialcatalogue-ms",
+    "GetUserRecordingProfile": "npvr-ms",
+    "GetProductByContent": "commercialcatalogue-ms",
+    "GetSOTVPrice": "commercialcatalogue-ms",
+    "GetCUTVPrice": "commercialcatalogue-ms",
+    "GetRecordingUrl": "npvr-ms",
+    "GenerateDeviceActivationCode": "tokenmanagement-ms",
+    "VerifyActivationCodeAndRegisterDevice": "tokenmanagement-ms",
+    "DeleteBookmarkUserData": "bookmark-ms"
+  },
+  "v2": {
+    "isMicroservice": true,
+    "basePath": "/v2",
+    "GetBookmarks": "bookmark-ms",
+    "AddBookmarkSet": "bookmark-ms",
+    "UpdateBookmark": "bookmark-ms",
+    "UpdateBookmarkSet": "bookmark-ms",
+    "GetPublisherPointV2": "contentplayback-ms",
+    "AddBookmarks": "bookmark-ms",
+    "DeleteBookmark": "bookmark-ms",
+    "CheckDevice": "devicemanagement-ms",
+    "GetUserChannels": "userentitlement-ms",
+    "GetSeriesRecordings": "npvr-ms",
+    "GenerateTokens": "tokenmanagement-ms",
+    "DeleteUserRefreshToken": "tokenmanagement-ms",
+    "GetPlatforms": "configuration-ms",
+    "GetUserToken": "tokenmanagement-ms",
+    "DeleteUserToken": "tokenmanagement-ms",
+    "GetAccountTechnicalPackages": "userentitlement-ms"
+  },
+  "v3": {
+    "isMicroservice": true,
+    "basePath": "/v3",
+    "GetUserChannels": "userentitlement-ms",
+    "GetUserDetails": "userprofile-ms"
+  },
+  "pgw": {
+    "isMicroservice": true,
+    "basePath": "/ws",
+    "GetTransactionDetailsByUserId": "pgw-ms",
+    "GetPMDetailsByUserId": "pgw-ms"
+  },
+  "sdp-so": {
+    "isMicroservice": false,
+    "GetUserClusters": "http://avs-sdp-so-service:8080/SdpClusterRuleService/getUserClusters"
+  },
+  "epg": {
+    "isMicroservice": true,
+    "basePath": "/epg",
+    "epgPackageIngestor": "dcq-live-ingestor"
+  },
+  "channel": {
+    "isMicroservice": true,
+    "basePath": "/channel",
+    "getChannels": "dcq-live-ingestor"
+  },
+  "captcha": {
+    "isMicroservice": true,
+    "basePath": "/besc/CaptchaGenerator",
+    "service": "default"
+  },
+  "recEngineRouting": {
+    "isMicroservice": false,
+    "REC_ENGINE": "http://avs-crefe-service:8080/RE/REController.do",
+    "basePath": "/RE/REController.do"
+  },
+  "dcqrouting": {
+    "isMicroservice": false,
+    "template": "http://avs-dcq-service:4000/DCQ/templates",
+    "search": "http://avs-dcq-service:4000/DCQ/search",
+    "suggestion": "http://avs-dcq-service:4000/DCQ/suggestion"
+  },
+  "elasticSearch": {
+    "ESHost": "elasticsearch:9200",
+    "staging": {
+      "isEnabled": false,
+      "ESHost": "elasticsearch:9200",
+      "prefix": "staging_",
+      "indexes": [
+        "menu_container",
+        "page_container",
+        "collection_container",
+        "dynamic_collections",
+        "launcher_container",
+        "config_container",
+        "dictionary_container",
+        "filter_list_container"
+      ],
+      "requestConditions": [
+        {
+          "source": "headers",
+          "key": "x-es-env",
+          "value": "staging"
+        }
+      ]
+    }
+  },
+  "uiBuilder": {
+    "trayRanking": {
+      "isSimplified": true,
+      "simplifiedTags": [
+        "platform"
+      ]
+    },
+    "filterList": {
+      "isFilterListEnabled": false,
+      "isFilterListPollingEnabled": false,
+      "filterListRefreshInterval": 60000
+    }
+  },
+  "pinBoard": {
+    "isMicroservice": false,
+    "basePath": "http://avs-1ux-service:9090"
+  },
+  "adobeTarget": {
+    "url": "http://accentureplc.tt.omtrdc.net/rest/v1/mbox/##sessionId##?client=accentureplc",
+    "firstMbox": "apiTestMbox5",
+    "secondMbox": "apiTestMbox4",
+    "cookieName": "abTestSessionId"
+  },
+  "loginMethods": [
+    "Login",
+    "LoginFB",
+    "SilentLoginIOS",
+    "IpAuthentication"
+  ],
+  "logoutMethods": [
+    "Logout"
+  ],
+  "compositeMethods": {
+    "Join": [
+      "Token"
+    ]
+  },
+  "headers": {
+    "etag": "ETag",
+    "content-md5": "Content-MD5",
+    "mime-version": "MIME-Version",
+    "te": "TE",
+    "www-authenticate": "WWW-Authenticate",
+    "p3p": "P3P",
+    "api-key": "api-key",
+    "username": "username"
+  },
+  "mapper": {
+    "disabled": false,
+    "mapConfigs": [
+      {
+        "name": "userProfile-sdk",
+        "file": "utils/mapper/templates/userProfile-sdk.json"
+      },
+      {
+        "name": "userProfileData-sdk",
+        "file": "utils/mapper/templates/userProfileData-sdk.json"
+      },
+      {
+        "name": "getUserDevices-sdk",
+        "file": "utils/mapper/templates/user_1_2/device_1_2/getUserDevices-sdk.json"
+      },
+      {
+        "name": "userDevices_1_2-sdk",
+        "file": "utils/mapper/templates/user_1_2/device_1_2/userDevices_1_2-sdk.json"
+      },
+      {
+        "name": "packageListItem-sdk",
+        "file": "utils/mapper/templates/packageListItem-sdk.json"
+      },
+      {
+        "name": "paymentListItem-sdk",
+        "file": "utils/mapper/templates/paymentListItem-sdk.json"
+      },
+      {
+        "name": "notificationData-sdk",
+        "file": "utils/mapper/templates/notificationData-sdk.json"
+      },
+      {
+        "name": "collection-sdk",
+        "file": "utils/mapper/templates/collection-sdk.json"
+      },
+      {
+        "name": "collectionContainers-sdk",
+        "file": "utils/mapper/templates/collectionContainers-sdk.json"
+      },
+      {
+        "name": "actions-sdk",
+        "file": "utils/mapper/templates/actions-sdk.json"
+      },
+      {
+        "name": "actorsList-sdk",
+        "file": "utils/mapper/templates/actorsList-sdk.json"
+      },
+      {
+        "name": "detail-sdk",
+        "file": "utils/mapper/templates/detail-sdk.json"
+      },
+      {
+        "name": "detailContainers-sdk",
+        "file": "utils/mapper/templates/detailContainers-sdk.json"
+      },
+      {
+        "name": "detailContainersCategories-sdk",
+        "file": "utils/mapper/templates/detailContainersCategories-sdk.json"
+      },
+      {
+        "name": "detail_1_4ContainersCategories-sdk",
+        "file": "utils/mapper/templates/detail_1_4/detail_1_4ContainersCategories-sdk.json"
+      },
+      {
+        "name": "detailContainersChildren-sdk",
+        "file": "utils/mapper/templates/detailContainersChildren-sdk.json"
+      },
+      {
+        "name": "detailContainersPlatformVariants-sdk",
+        "file": "utils/mapper/templates/detailContainersPlatformVariants-sdk.json"
+      },
+      {
+        "name": "detailContainersObjects-sdk",
+        "file": "utils/mapper/templates/detailContainersObjects-sdk.json"
+      },
+      {
+        "name": "stopContent_1_2-sdk",
+        "file": "utils/mapper/templates/stopContent_1_2-sdk.json"
+      },
+      {
+        "name": "stopContent_1_4-sdk",
+        "file": "utils/mapper/templates/stopContent_1_4-sdk.json"
+      },
+      {
+        "name": "commercialPackagesByContent-sdk",
+        "file": "utils/mapper/templates/commercialPackagesByContent-sdk.json"
+      },
+      {
+        "name": "commercialPackagesByUser-sdk",
+        "file": "utils/mapper/templates/commercialPackagesByUser-sdk.json"
+      },
+      {
+        "name": "login-sdk",
+        "file": "utils/mapper/templates/login-sdk.json"
+      },
+      {
+        "name": "loginContainers-sdk",
+        "file": "utils/mapper/templates/loginContainers-sdk.json"
+      },
+      {
+        "name": "tags-sdk",
+        "file": "utils/mapper/templates/tags-sdk.json"
+      },
+      {
+        "name": "variantsList-sdk",
+        "file": "utils/mapper/templates/variantsList-sdk.json"
+      },
+      {
+        "name": "login_1_2-sdk",
+        "file": "utils/mapper/templates/login_1_2-sdk.json"
+      },
+      {
+        "name": "profile_1_2-sdk",
+        "file": "utils/mapper/templates/profile_1_2-sdk.json"
+      },
+      {
+        "name": "profile_recording_1_2-sdk",
+        "file": "utils/mapper/templates/profile_recording_1_2-sdk.json"
+      },
+      {
+        "name": "profile_external_1_2-sdk",
+        "file": "utils/mapper/templates/profile_external_1_2-sdk.json"
+      },
+      {
+        "name": "collectionUserDataContainers-sdk",
+        "file": "utils/mapper/templates/collectionUserDataContainers-sdk.json"
+      },
+      {
+        "name": "collectionUserDataContainers_1_3-sdk",
+        "file": "utils/mapper/templates/collectionUserDataContainers_1_3-sdk.json"
+      },
+      {
+        "name": "collectionUserData-sdk",
+        "file": "utils/mapper/templates/collectionUserData-sdk.json"
+      },
+      {
+        "name": "collectionUserData_1_3-sdk",
+        "file": "utils/mapper/templates/collectionUserData_1_3-sdk.json"
+      },
+      {
+        "name": "recordingsList_1_3-sdk",
+        "file": "utils/mapper/templates/recordingsList_1_3-sdk.json"
+      },
+      {
+        "name": "assetUserData-sdk",
+        "file": "utils/mapper/templates/assetUserData-sdk.json"
+      },
+      {
+        "name": "bookmark-sdk",
+        "file": "utils/mapper/templates/bookmark-sdk.json"
+      },
+      {
+        "name": "rating-sdk",
+        "file": "utils/mapper/templates/rating-sdk.json"
+      },
+      {
+        "name": "videoUrl_1_2-sdk",
+        "file": "utils/mapper/templates/videoUrl_1_2-sdk.json"
+      },
+      {
+        "name": "favorite-sdk",
+        "file": "utils/mapper/templates/favorite-sdk.json"
+      },
+      {
+        "name": "collectionChannel_1_2-sdk",
+        "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2-sdk.json"
+      },
+      {
+        "name": "collectionChannel_1_2Assets-sdk",
+        "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Assets-sdk.json"
+      },
+      {
+        "name": "collectionChannel_1_2AssetMetadata-sdk",
+        "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2AssetMetadata-sdk.json"
+      },
+      {
+        "name": "collectionChannel_1_2Containers-sdk",
+        "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Containers-sdk.json"
+      },
+      {
+        "name": "collectionChannel_1_2Metadata-sdk",
+        "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Metadata-sdk.json"
+      },
+      {
+        "name": "collectionChannel_1_2Collector-sdk",
+        "file": "utils/mapper/templates/tray_1_2/channel/collectionChannel_1_2Collector-sdk.json"
+      },
+      {
+        "name": "collectionEpg-sdk",
+        "file": "utils/mapper/templates/tray_1_2/epg/collectionEpg-sdk.json"
+      },
+      {
+        "name": "collectionEpgContainersChannel-sdk",
+        "file": "utils/mapper/templates/tray_1_2/epg/collectionEpgContainersChannel-sdk.json"
+      },
+      {
+        "name": "collection_1_2-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collection_1_2-sdk.json"
+      },
+      {
+        "name": "collection_1_2Containers-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collection_1_2Containers-sdk.json"
+      },
+      {
+        "name": "collection_1_2ContainersAssets-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersAssets-sdk.json"
+      },
+      {
+        "name": "collection_1_2ContainersChannel-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersChannel-sdk.json"
+      },
+      {
+        "name": "collection_1_2ContainersMetadata-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersMetadata-sdk.json"
+      },
+      {
+        "name": "collection_1_4Channel-sdk",
+        "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4Channel-sdk.json"
+      },
+      {
+        "name": "collection_1_4ChannelAssets-sdk",
+        "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelAssets-sdk.json"
+      },
+      {
+        "name": "collection_1_4ChannelContainers-sdk",
+        "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelContainers-sdk.json"
+      },
+      {
+        "name": "collection_1_4ChannelMetadata-sdk",
+        "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelMetadata-sdk.json"
+      },
+      {
+        "name": "collection_1_4ChannelCollector-sdk",
+        "file": "utils/mapper/templates/tray_1_4/channel/collection_1_4ChannelCollector-sdk.json"
+      },
+      {
+        "name": "collection_1_4Epg-sdk",
+        "file": "utils/mapper/templates/tray_1_4/epg/collection_1_4Epg-sdk.json"
+      },
+      {
+        "name": "collection_1_4EpgContainersChannel-sdk",
+        "file": "utils/mapper/templates/tray_1_4/epg/collection_1_4EpgContainersChannel-sdk.json"
+      },
+      {
+        "name": "collection_1_4-sdk",
+        "file": "utils/mapper/templates/tray_1_4/search/collection_1_4-sdk.json"
+      },
+      {
+        "name": "collection_1_4Containers-sdk",
+        "file": "utils/mapper/templates/tray_1_4/search/collection_1_4Containers-sdk.json"
+      },
+      {
+        "name": "collection_1_4ContainersAssets-sdk",
+        "file": "utils/mapper/templates/tray_1_4/search/collection_1_4ContainersAssets-sdk.json"
+      },
+      {
+        "name": "collection_1_4ContainersChannel-sdk",
+        "file": "utils/mapper/templates/tray_1_4/search/collection_1_4ContainersChannel-sdk.json"
+      },
+      {
+        "name": "collection_1_4ContainersMetadata-sdk",
+        "file": "utils/mapper/templates/tray_1_4/search/collection_1_4ContainersMetadata-sdk.json"
+      },
+      {
+        "name": "detail_1_2-sdk",
+        "file": "utils/mapper/templates/detail_1_2/detail_1_2-sdk.json"
+      },
+      {
+        "name": "detail_1_2Containers-sdk",
+        "file": "utils/mapper/templates/detail_1_2/detail_1_2Containers-sdk.json"
+      },
+      {
+        "name": "detail_1_2ContainersMetadata-sdk",
+        "file": "utils/mapper/templates/detail_1_2/detail_1_2ContainersMetadata-sdk.json"
+      },
+      {
+        "name": "assetDetail_1_4-sdk",
+        "file": "utils/mapper/templates/detail_1_4/assetDetail_1_4-sdk"
+      },
+      {
+        "name": "detail_1_4-sdk",
+        "file": "utils/mapper/templates/detail_1_4/detail_1_4-sdk.json"
+      },
+      {
+        "name": "detail_1_4Containers-sdk",
+        "file": "utils/mapper/templates/detail_1_4/detail_1_4Containers-sdk.json"
+      },
+      {
+        "name": "detail_1_4ContainersMetadata-sdk",
+        "file": "utils/mapper/templates/detail_1_4/detail_1_4ContainersMetadata-sdk.json"
+      },
+      {
+        "name": "collection_1_2ContainersParents-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collection_1_2ContainersParents-sdk"
+      },
+      {
+        "name": "detail_1_2ContainersParents-sdk",
+        "file": "utils/mapper/templates/detail_1_2/detail_1_2ContainersParents-sdk"
+      },
+      {
+        "name": "detail_1_4ContainersParents-sdk",
+        "file": "utils/mapper/templates/detail_1_4/detail_1_4ContainersParents-sdk"
+      },
+      {
+        "name": "assetDetail-sdk",
+        "file": "utils/mapper/templates/detail_1_2/assetDetail-sdk.json"
+      },
+      {
+        "name": "group-sdk",
+        "file": "utils/mapper/templates/group-sdk.json"
+      },
+      {
+        "name": "commercialPackages_1_2-sdk",
+        "file": "utils/mapper/templates/commercialPackages_1_2-sdk.json"
+      },
+      {
+        "name": "commercialPackagesByUser_1_2-sdk",
+        "file": "utils/mapper/templates/commercialPackages_1_2/commercialPackagesByUser_1_2-sdk.json"
+      },
+      {
+        "name": "update_profile_1_2-sdk",
+        "file": "utils/mapper/templates/user_1_2/update_profile_1_2-sdk.json"
+      },
+      {
+        "name": "userProfilePC_1_2-sdk",
+        "file": "utils/mapper/templates/user_1_2/userProfilePC_1_2-sdk.json"
+      },
+      {
+        "name": "deleteUserProfilePC_1_2-sdk",
+        "file": "utils/mapper/templates/user_1_2/deleteUserProfilePC_1_2-sdk.json"
+      },
+      {
+        "name": "getUserFavorites-sdk",
+        "file": "utils/mapper/templates/userFavourites-sdk.json"
+      },
+      {
+        "name": "deleteFavourite-sdk",
+        "file": "utils/mapper/templates/input/deleteFavourite-sdk.json"
+      },
+      {
+        "name": "postFavouriteItem-sdk",
+        "file": "utils/mapper/templates/input/postFavouriteItem-sdk.json"
+      },
+      {
+        "name": "emptyResult-sdk",
+        "file": "utils/mapper/templates/emptyResult-sdk.json"
+      },
+      {
+        "name": "deleteFavouriteItem-sdk",
+        "file": "utils/mapper/templates/input/deleteFavouriteItem-sdk.json"
+      },
+      {
+        "name": "userReminderContainer-sdk",
+        "file": "utils/mapper/templates/userReminderContainer-sdk.json"
+      },
+      {
+        "name": "deleteUserReminder-sdk",
+        "file": "utils/mapper/templates/deleteUserReminder-sdk.json"
+      },
+      {
+        "name": "updateUserReminder-sdk",
+        "file": "utils/mapper/templates/updateUserReminder-sdk.json"
+      },
+      {
+        "name": "getBookmarkSet_1_2-sdk",
+        "file": "utils/mapper/templates/getBookmarkSet_1_2-sdk.json"
+      },
+      {
+        "name": "updateBookmarkSet-sdk",
+        "file": "utils/mapper/templates/input/bookmark/updateBookmarkSet-sdk.json"
+      },
+      {
+        "name": "deleteBookmark-sdk",
+        "file": "utils/mapper/templates/input/bookmark/deleteBookmark-sdk.json"
+      },
+      {
+        "name": "collection_1_2RecordinSeries-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collection_1_2RecordinSeries-sdk.json"
+      },
+      {
+        "name": "collectionRecordingSeriesContainers-sdk",
+        "file": "utils/mapper/templates/tray_1_2/search/collectionRecordingSeriesContainers-sdk.json"
+      },
+      {
+        "name": "userConsents-sdk",
+        "file": "utils/mapper/templates/userConsents-sdk.json"
+      },
+      {
+        "name": "postBookmark-sdk",
+        "file": "utils/mapper/templates/postBookmark-sdk.json"
+      },
+      {
+        "name": "postContentUserdataBookmark_1_4-sdk",
+        "file": "utils/mapper/templates/postContentUserdataBookmark_1_4-sdk.json"
+      },
+      {
+        "name": "putBookmark-sdk",
+        "file": "utils/mapper/templates/putBookmark-sdk.json"
+      },
+      {
+        "name": "putUserConsent-sdk",
+        "file": "utils/mapper/templates/putUserConsent-sdk.json"
+      },
+      {
+        "name": "ratingDetails-sdk",
+        "file": "utils/mapper/templates/ratingDetails-sdk.json"
+      },
+      {
+        "name": "deleteRecordings-sdk",
+        "file": "utils/mapper/templates/deleteRecordings_1_2-sdk.json"
+      },
+      {
+        "name": "transactionDetail_1_2-sdk",
+        "file": "utils/mapper/templates/transaction_1_2/transactionDetail_1_2-sdk.json"
+      },
+      {
+        "name": "postFavorites-sdk",
+        "file": "utils/mapper/templates/postFavorites-sdk.json"
+      },
+      {
+        "name": "userRecordings_1_3-sdk",
+        "file": "utils/mapper/templates/user_1_3/userRecordings_1_3-sdk.json"
+      },
+      {
+        "name": "recordings_1_3-sdk",
+        "file": "utils/mapper/templates/user_1_3/recordings_1_3-sdk.json"
+      },
+      {
+        "name": "userPassword-sdk",
+        "file": "utils/mapper/templates/userPassword-sdk.json"
+      },
+      {
+        "name": "hiddenChannels_1_2-sdk",
+        "file": "utils/mapper/templates/user_1_2/hiddenChannels_1_2-sdk.json"
+      },
+      {
+        "name": "configConsents-sdk",
+        "file": "utils/mapper/templates/configConsents-sdk.json"
+      }
+    ]
+  },
+  "httpClientSecureFields": [
+    {
+      "find": "action=Login|action=LoginFB|action=SilentLoginIOS|action=IpAuthentication|action=ChangePassword|action=CheckContentRights|action=CheckAggregatedContentRights|action=PurchaseItem|action=PurchaseItemPGW|action=PurchaseItemNotification|action=IOSPurchase|action=RegisterExtPurchase|action=GetPurchaseHistory|action=AddSubAccount|action=CheckPMAvailability|action=PMRegistrationNotify|action=Join|action=ResetPin|action=RetrievePaymentMethod|action=SetPaymentMethod|action=ReserveAccountCancellation|action=SetRating|action=UserConciliation|action=UpdateSubAccountProfile|action=ReserveCancellation|action=GetCDN|action=StopContent|action=DeleteRecordings|action=DeleteSeriesRecordings|action=GetRecordingList|action=GetRecordingUrl|action=GetSeriesRecording|action=GetUserRecordingProfile|action=SetRecording|action=SetSeriesRecording|action=StartRecording|action=StopRecording|action=UpdateRecording|action=UpdateSeriesRecording|action=RefreshToken",
+      "replace": {
+        "username": "***",
+        "password": "***",
+        "resultObj.cardNumber": "***",
+        "resultObj.userProfileData.email": "***",
+        "resultObj.userProfileData.pinCode": "***",
+        "resultObj.mobilePhone": "***",
+        "resultObj.userProfileData.birthDate": "***"
+      }
+    },
+    {
+      "find": "action=CheckPin|action=UpdateProfile",
+      "replace": {
+        "username": "***",
+        "password": "***",
+        "resultObj.cardNumber": "***",
+        "resultObj.userProfileData.email": "***",
+        "resultObj.userProfileData.pinCode": "***",
+        "resultObj.mobilePhone": "***",
+        "resultObj.userProfileData.userAddress": "***",
+        "resultObj.userProfileData.birthDate": "***"
+      }
+    },
+    {
+      "find": "action=GetProfile",
+      "replace": {
+        "username": "***",
+        "password": "***",
+        "resultObj.cardNumber": "***",
+        "resultObj.userProfileData.email": "***",
+        "resultObj.userProfileData.pinCode": "***",
+        "resultObj.userProfileData.userAddress": "***",
+        "resultObj.userProfileData.birthDate": "***"
+      }
+    },
+    {
+      "find": "action=GetFamilyProfileList",
+      "replace": {
+        "username": "***",
+        "password": "***",
+        "resultObj.cardNumber": "***",
+        "resultObj.userProfileData.pinCode": "***",
+        "resultObj.mobilePhone": "***"
+      }
+    }
+  ],
+  "secureFields": {
+    "fieldList": [
+      "username",
+      "userName",
+      "accountUsername",
+      "userList",
+      "usernames",
+      "user",
+      "AccountId",
+      "subscriberAccountNumber",
+      "gender",
+      "country",
+      "state",
+      "city",
+      "region",
+      "custom-attributes",
+      "birthdate",
+      "userConsentStatus",
+      "consentStatus",
+      "userInfo",
+      "oldPin",
+      "newPin",
+      "newParentalControlPin",
+      "newPurchasePin",
+      "purchasePin",
+      "customAttributes",
+      "consentFlag",
+      "userConsentFlag",
+      "mobilePhone",
+      "crmAccountMobileNumber",
+      "address",
+      "addressNumber",
+      "geoZipCodeValue",
+      "userLanguage",
+      "billAddress",
+      "billAddressNumber",
+      "paymentTransactionId",
+      "billingTransactionId",
+      "partyName",
+      "cardNumber",
+      "masterAccount",
+      "tan",
+      "userPinPurchase",
+      "userPinParentalControl",
+      "fiscalCode",
+      "rowId",
+      "parentUserName",
+      "firstName",
+      "surname",
+      "lastname",
+      "createdBy",
+      "passwords",
+      "email",
+      "password",
+      "pin",
+      "pins",
+      "parentalControlPin",
+      "avs_user_info",
+      "x-avs-username",
+      "crmAccountId",
+      "resultObj",
+      "customerAuthenticator",
+      "kek"
+    ],
+    "charMask": "***"
+  },
+  "b2bSecureFieldPath": {
+    "switchCommercialPackage": "/users/***/commercialPackageSwitches",
+    "IncreaseConcurrentStreams": "/users/***/concurrentStreams",
+    "RefreshConcurrentStreams": "/users/***/concurrentStreams/:streamingSessionId",
+    "DecreaseConcurrentStreams": "/users/***/concurrentStreams/:streamingSessionId",
+    "getUser": "/users/***",
+    "GetRecordings": "/users/***/recordings",
+    "GetRecordingUrl": "/users/***/recordings/:recordId/url",
+    "GetSOTVUrl": "/users/***/SOTV/url",
+    "GetCUTVUrl": "/users/***/CUTV/url",
+    "GetUserInfo": "/users/***/info",
+    "CreateUser": "/users/***",
+    "DeleteUser": "/users/***",
+    "CheckRecordingRights": "/users/***/recordings/:recordId/entitlements",
+    "CheckSOTVRights": "/users/***/SOTV/:liveContentId/entitlements",
+    "CheckCUTVRights": "/users/***/CUTV/:liveContentId/entitlements",
+    "GetSOTVEvent": "/users/***/SOTV",
+    "GetCUTVEvent": "/users/***/CUTV",
+    "SetPaymentProfile": "/users/***/paymentProfile",
+    "GetPaymentProfile": "/users/***/paymentProfile",
+    "GetGroupsByUser": "/users/***/groups",
+    "SetPaymentInfo": "/users/***/paymentMethod",
+    "GenerateUserInfo": "/userreports/***",
+    "CreateUserConsents": "/users/***/consents",
+    "UpdateUserConsents": "/users/***/consents",
+    "GetUserDevicePolicies": "/users/***",
+    "GetUserChannels": "/users/***/LIVE/entitlements",
+    "CheckLiveRights": "/users/***/channels/:channelId/entitlements",
+    "CheckVODRights": "/users/***/contents/:contentId/entitlements",
+    "CheckPPVRights": "/users/***/PPV/:liveContentId/entitlements",
+    "RegisterDevice_auth": "/users/***/devices/:deviceId/deviceType/:deviceType",
+    "CheckAndRegisterDevice": "/users/***/devices/:deviceId",
+    "CheckDevice": "/users/***/devices/:deviceId",
+    "CreateUserMapping": "/users/***/mapping",
+    "GetPublisherPoint": "/users/***/publisherpoint",
+    "CheckParentalControlPin": "/users/username/***/parentalControlPin",
+    "UpdateUserDetails": "/users/***/update"
+  },
+  "errorResponse": {
+    "setTrackingId": false,
+    "isNoCacheEnabled": true
+  },
+  "response": {
+    "isContentTypeJson": true,
+    "setSystemTimeInSec": false
+  },
+  "userProfile": {
+    "jwtSecret": "S3Cr3t4UP",
+    "cookieName": "up",
+    "maxAge": 1000000,
+    "isHttpOnly": true,
+    "isEncryptEnabled": true,
+    "isSecure": true,
+    "fields": {
+      "userId": "resultObj.userId",
+      "username": "resultObj.username",
+      "geoZipCode": "resultObj.geoZipcodeName",
+      "userPCLevelEpg": "resultObj.userPCLevelEpg",
+      "userPcExtendedRatings": "resultObj.userPcExtendedRatings",
+      "userParentalControl": "resultObj.userParentalControl",
+      "property": "resultObj.properties"
+    }
+  },
+  "tokenPlayback": {
+    "jwtSecret": "S3Cr3t4TpB",
+    "cookieName": "playback_token",
+    "maxAgeInStream": 10000,
+    "maxAgeInDownload": 21600000,
+    "isHttpOnly": true,
+    "isSecure": true
+  },
+  "vmxToken": {
+    "expirationTime": 10000,
+    "gdDuration": 3600000,
+    "iv": "T0k3niV3ct04",
+    "maxDuration": 2147483647
+  },
+  "voucherToken": {
+    "note": "expiration time is in seconds",
+    "expirationTime": 300,
+    "iv": "[B@4eccd769"
+  },
+  "avsCookieSettings": {
+    "expirationEnabled": false
+  },
+  "channelListPolling": {
+    "isChanneListPollingEnabled": true,
+    "isBlackoutChannelListPollingEnabled": true,
+    "getLiveChannlesFromES": {
+      "liveChannelsUrlHttp": "http://elasticsearch:9200/livechannel/_search",
+      "liveChannelsUrlHttps": "https://elasticsearch:9200/livechannel/_search",
+      "esBody": "{\"from\":0,\"size\":10000,\"_source\":{\"includes\":[\"liveChannel.channelId\",\"liveChannel.metadata.*\",\"liveChannel.technicalPackages.*\",\"liveChannel.platformVariants.*\",\"liveChannel.properties.*\",\"liveChannel.channelCollector.*\",\"liveChannel.regions.*\"],\"excludes\":[\"liveChannel.metadata.drmInfo\"]},\"query\":{\"bool\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"liveChannel.regions.isDefault\":true}},{\"term\":{\"liveChannel.metadata.isActive\":true}},{\"term\":{\"liveChannel.platformName\":\"pctv\"}}]}}}}}"
+    },
+    "getBlackoutChannelListUrl": "/v1/blackout/events?startTime=:startTime&endTime=:endTime&startIndex=0&maxResults=50",
+    "getPlatformsPath": "/v1/configurations/general/platforms",
+    "usePlatformsAggregationFromES": true,
+    "defaultPlatform": "PCTV",
+    "startTimeDelay": 7200000,
+    "blackoutChannelRefreshInterval": 10000,
+    "channelRefreshInterval": 300000
+  },
+  "sysParameters": {
+    "enabled": true,
+    "uri": "/v1/configurationParameters",
+    "refreshInterval": 300000,
+    "parameters": [
+      "JWT_APPLICATION_SIGNATURE_KEY",
+      "JWT_AES_GCM_ENCRYPTION_ENABLED",
+      "TOKEN_PAYLOAD_ENCRYPTION_ENABLED",
+      "AES_KEY",
+      "SCTE_35_STANDARD_ENABLED",
+      "MAX_HOURS_IN_PENDING",
+      "SDP_IN_PANIC",
+      "SDP_DEVICE_IN_PANIC",
+      "SDP_RIGHTS_DEVICE_MANAGEMENT",
+      "SDP_LOGIN_DEVICE_MANAGEMENT_IN_PANIC",
+      "RPGW_IN_PANIC",
+      "RPWG_ENABLED",
+      "DEVICE_MANAGEMENT_EXCLUDED_PLATFORMS",
+      "EPG_BACKWARD_PERIOD",
+      "SOTV_RECORDING_EXTRA_TIME",
+      "SOTV_RECORDING_PROGRAM_DURATION_ENABLED",
+      "USE_DUMMY_USER",
+      "CHECK_GUEST_OOH_ON_EXTERNAL_SYSTEM",
+      "IS_GUEST_OOH",
+      "LOGIN_DEVICE_MANAGEMENT_IN_PANIC",
+      "JWT_AES_GCM_ENCRYPTION_ENABLED",
+      "LIVE_EVENT_UNIQUE_IDENTIFIER_ENABLED",
+      "EXPORT_USER_DATA_MAIL_ENABLED",
+      "NPVR_IN_PANIC",
+      "LOGIN_IN_PANIC",
+      "LOGIN_PANIC_PLATFORM",
+      "LOGIN_FB_IN_PANIC",
+      "LOGIN_FB_PANIC_PLATFORM",
+      "SKIP_FB_CREDENTIAL_CHECK",
+      "IP_AUTHENTICATION_IN_PANIC",
+      "IP_AUTHENTICATION_IN_PANIC_PLATFORMS",
+      "IP_AUTH_GTW_ENABLED",
+      "SILENT_LOGIN_IOS_IN_PANIC",
+      "SILENT_LOGIN_IOS_PANIC_PLATFORM",
+      "DEVICE_LOGIN_IN_PANIC",
+      "COOKIE_NAME_PCTV",
+      "REFRESH_TOKEN_HEADER",
+      "COOKIE_DOMAIN_PCTV",
+      "COOKIE_PATH",
+      "COOKIE_REMEMBER_MAXAGE",
+      "COOKIE_REMEMBER_MAXAGE_IN_PANIC",
+      "COOKIE_HTTP_ONLY_ENABLED",
+      "COOKIE_SECURITY_ENABLED",
+      "PGW_FLAG",
+      "GLOBAL_VAST_TAGS",
+      "UI_LANGUAGE_TYPE_DEFAULT_VALUE",
+      "MAX_HD_SETTOPBOXES",
+      "CSFR_TOKEN_CHECK_PLATFORMS",
+      "CSFR_TOKEN_CHECK_ENABLED",
+      "CANCELLATION_REASON_LIST",
+      "CURRENCY_MULTIPLIER",
+      "PUBLISHER_POINT_RULES_SKIPPING_PROTOCOLS",
+      "CHECK_ACCESS_TOKEN",
+      "REFRESH_TOKEN_EXPIRATION_TIME_LONG",
+      "OAUTH2_ENABLED",
+      "REFRESH_TOKEN_EXPIRATION_TIME_SHORT",
+      "AP_MAX_CACHE_RETAIN",
+      "DUMMY_USERNAME",
+      "TOKEN_EXPIRATION_CHECK",
+      "DUMMY_USERID",
+      "WSS_TOKEN_VALIDATION_PANIC_ENABLED",
+      "AVA_IN_PANIC",
+      "CONFIGURABLE_EPISODE_RESPONSE_ENABLED",
+      "CONFIGURABLE_EPISODE_RESPONSE_TEMPLATE",
+      "KEEP_ALIVE_TIMEOUT",
+      "MAX_PREBOOKING_TIME",
+      "ACCESS_TOKEN_EXISTENCE_CHECK_ENABLED"
+    ]
+  },
+  "paymentTypes": {
+    "enabled": true,
+    "uri": "/v1/paymentTypes",
+    "refreshInterval": 300000
+  },
+  "csrfExcludedAPIs": {
+    "POST": [
+      "/USER/SESSIONS"
+    ]
+  },
+  "videoTypes": {
+    "enabled": true,
+    "uri": "/v1/videotypes/tenantDefault",
+    "refreshInterval": 300000
+  },
+  "platforms": {
+    "enabled": true,
+    "uri": "/v1/configurations/general/platforms",
+    "refreshInterval": 300000
+  },
+  "commonCookiesProperties": {
+    "sameSite": {
+      "enabled": false,
+      "value": {
+        "PCTV": "",
+        "ANDROID": ""
+      }
+    }
+  },
+  "clientscopes": {
+    "enabled": true,
+    "uri": "/v1/clientScopes",
+    "refreshInterval": 300000
+  },
+  "userClusterList": {
+    "list": [
+      {
+        "key": "A",
+        "description": "Anonimous"
+      },
+      {
+        "key": "R",
+        "description": "Registered"
+      }
+    ],
+    "enabled": true
+  },
+  "corePlatformValidationEnabled": false,
+  "coreValidationTokenEnabled": true,
+  "elasticSearchConfig": {
+    "version": 5.6
+  },
+  "dateFormat": {
+    "timeZone": "Etc/GMT",
+    "format": "YYYY-MM-DD"
+  },
+  "defaultFolderConfig": {
+    "isEnabled": true,
+    "defaultFolderName": "DEFAULT_FOLDER",
+    "defaultFolderType": "COLLECTION"
+  },
+  "commonResponseHeaders": {
+    "X-Content-Type-Options": {
+      "enabled": true,
+      "value": "nosniff"
+    },
+    "X-Frame-Options": {
+      "enabled": true,
+      "value": "SAMEORIGIN"
+    },
+    "P3P": {
+      "enabled": true,
+      "value": "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+    },
+    "Content-Security-Policy": {
+      "enabled": true,
+      "value": "default-src 'self'"
+    },
+    "X-XSS-Protection": {
+      "enabled": true,
+      "value": "1; mode=block"
+    },
+    "Strict-Transport-Security": {
+      "enabled": true,
+      "value": "max-age: 31536000; includeSubDomains"
+    }
+  },
+  "allowedContentTypes": {
+    "list": [
+      "application/json"
+    ]
+  },
+  "dcqDecoupledTemplates": {
+    "list": [
+      "GetAggregatedContentDetail",
+      "SearchVodEvents",
+      "GetLiveInfo",
+      "GetLiveChannelList",
+      "GetLauncherMetadata",
+      "GetLiveContentMetadata",
+      "GetVodContentMetadata",
+      "GetEpg",
+      "SearchContents",
+      "SearchSuggestions"
+    ]
+  }
+}

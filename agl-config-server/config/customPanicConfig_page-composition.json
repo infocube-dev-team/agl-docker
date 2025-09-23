@@ -1,0 +1,16 @@
+{
+    "TestKey1": {
+        "url": "",
+        "enableBody": true,
+        "enableQuery": true,
+        "enablePath": true,
+        "enableHeader": true
+    },
+    "TestKey2": {
+        "url": "",
+        "enableBody": true,
+        "enableQuery": true,
+        "enablePath": true,
+        "enableHeader": true
+    }
+}
