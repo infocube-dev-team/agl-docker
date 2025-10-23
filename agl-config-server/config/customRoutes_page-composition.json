@@ -725,6 +725,19 @@
     "nanoConfigKey": "getTraySearchPage_1_6"
   },
   {
+    "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/ENTITY/:entityType",
+    "method": "get",
+    "middleware": [
+      "shared/authUserCookieDecrypt",
+      "shared/isTokenValid",
+      "shared/paginationValidation",
+      "tray_1_6/search/entity",
+      "shared/autoMapper"
+    ],
+    "panic": false,
+    "template": "entityCollection_1_6-sdk"
+  },
+  {
     "endpointUri": "/:tenant/:appversion/:cluster/:locale/:channel/:propertyName/TRAY/SEARCH/:contentType",
     "method": "get",
     "middleware": [
